@@ -7,8 +7,7 @@ Situs: `https://<akun>.github.io/uts-paw-<kelas>-kopi-kalimas/`
 ## Anggota & pembagian halaman
 | NPM | Nama | Akun GitHub | Halaman |
 |---|---|---|---|
-| ADITYA MAULANA ZIDQY
-06.2025.1.07923 | aditya maulana zidqy | [akun1] | `index.html`, `katalog.html` |
+| ADITYA MAULANA ZIDQY 06.2025.1.07923 | aditya maulana zidqy | [akun1] | `index.html`, `katalog.html` |
 | DEVANDA EKA LISTYONO 06.2025.1.07876 | devanda eka listyono | devandael | `reservasi.html`, `tentang.html`, `terima-kasih.html` |
 
 `css/style.css` dikerjakan bergantian, lihat riwayat commit.
