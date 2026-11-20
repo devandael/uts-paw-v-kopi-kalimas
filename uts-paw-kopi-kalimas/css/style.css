@@ -1,0 +1,121 @@
+/* Kopi Kalimas · style.css — dimuat SETELAH Bootstrap 5.3 (kustomisasi via variabel --bs-*) */
+:root{
+  color-scheme:light dark;
+  --c-bg:#f3f6f4; --c-surface:#fff; --c-text:#14231f; --c-muted:#46605a;
+  --c-primary:#0f5a4d; --c-primary-d:#0a4036; --c-on-primary:#fff;
+  --c-accent:#f2b134; --c-on-accent:#14231f;
+  --c-border:#cfdcd7; --c-danger:#a4161a; --c-focus:#0b5cad; --c-invert:0;
+  --font-head:"Palatino Linotype",Palatino,Georgia,serif;
+  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --space-1:.5rem; --space-2:1rem; --space-3:2rem; --radius:.5rem;
+  --bs-body-bg:var(--c-bg); --bs-body-color:var(--c-text); --bs-emphasis-color:var(--c-text);
+  --bs-secondary-color:var(--c-muted); --bs-body-font-family:var(--font-body);
+  --bs-border-color:var(--c-border); --bs-border-radius:var(--radius);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --c-bg:#0e1a17; --c-surface:#162623; --c-text:#e8f1ee; --c-muted:#b7cbc5;
+    --c-primary:#6fd1bb; --c-primary-d:#9be3d1; --c-on-primary:#0e1a17;
+    --c-border:#2c423d; --c-danger:#ff9a9a; --c-focus:#8ec5ff; --c-invert:1;
+  }
+  .form-select{--bs-form-select-bg-img:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e8f1ee' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e")}
+}
+
+/* Dark mode: tanda centang/radio Bootstrap bawaannya putih, kontrasnya rendah di atas hijau muda.
+   Diganti warna gelap. Cara menimpa variabel --bs-form-check-bg-image dari dokumentasi Bootstrap 5.3 (Forms > Checks and radios). */
+@media (prefers-color-scheme:dark){
+  .form-check-input:checked[type=checkbox]{--bs-form-check-bg-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%230e1a17' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e")}
+  .form-check-input:checked[type=radio]{--bs-form-check-bg-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%230e1a17'/%3e%3c/svg%3e")}
+}
+
+/* Reset & tipografi */
+*,::before,::after{box-sizing:border-box}
+body{font-family:var(--font-body);font-size:1rem;line-height:1.6}
+h1,h2,h3{font-family:var(--font-head);line-height:1.2}
+h1{font-size:clamp(1.9rem,1.2rem + 3.5vw,3.25rem)}
+h2{font-size:clamp(1.4rem,1.1rem + 1.5vw,2rem)}
+img{max-width:100%;height:auto}
+a{color:var(--c-primary)}
+a:hover{color:var(--c-primary-d)}
+:is(a,button,input,select,textarea,summary,.btn,.form-control,.form-select,.form-check-input,.navbar-toggler):focus-visible{outline:.1875rem solid var(--c-focus);outline-offset:.125rem}
+main:focus{outline:none}
+.skip-link{display:inline-flex;align-items:center;min-height:2.75rem;position:absolute;top:-4rem;left:var(--space-1);z-index:2000;padding:var(--space-1) var(--space-2);background:var(--c-primary);color:var(--c-on-primary);border-radius:var(--radius)}
+.skip-link:focus{top:var(--space-1)}
+.section{padding-block:var(--space-3)}
+.section-title::after{content:"";display:block;width:3rem;height:.25rem;margin-top:var(--space-1);background:var(--c-accent);border-radius:var(--radius)}
+
+/* Header sticky + navbar (flex) */
+.site-header{position:sticky;top:0;z-index:1030;background:var(--c-surface);border-bottom:1px solid var(--c-border)}
+.navbar{--bs-navbar-color:var(--c-text);--bs-navbar-hover-color:var(--c-primary);--bs-navbar-brand-color:var(--c-primary);--bs-navbar-brand-hover-color:var(--c-primary-d)}
+.navbar-brand{display:inline-flex;align-items:center;min-height:2.75rem;font-family:var(--font-head);font-weight:700}
+.navbar-nav{gap:var(--space-1)}
+.nav-link{display:flex;align-items:center;min-height:2.75rem}
+.nav-link[aria-current="page"]{color:var(--c-primary);font-weight:700;box-shadow:inset 0 -.25rem 0 var(--c-accent)}
+.navbar-toggler{min-width:2.75rem;min-height:2.75rem;border-color:var(--c-border)}
+.navbar-toggler-icon{filter:invert(var(--c-invert))}
+
+/* Tombol (kustomisasi komponen Bootstrap) */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem}
+.btn-primary{--bs-btn-bg:var(--c-primary);--bs-btn-border-color:var(--c-primary);--bs-btn-color:var(--c-on-primary);--bs-btn-hover-bg:var(--c-primary-d);--bs-btn-hover-border-color:var(--c-primary-d);--bs-btn-hover-color:var(--c-on-primary);--bs-btn-active-bg:var(--c-primary-d);--bs-btn-active-border-color:var(--c-primary-d);--bs-btn-active-color:var(--c-on-primary)}
+.btn-outline-primary{--bs-btn-color:var(--c-primary);--bs-btn-border-color:var(--c-primary);--bs-btn-hover-bg:var(--c-primary);--bs-btn-hover-border-color:var(--c-primary);--bs-btn-hover-color:var(--c-on-primary);--bs-btn-active-bg:var(--c-primary);--bs-btn-active-border-color:var(--c-primary);--bs-btn-active-color:var(--c-on-primary)}
+
+/* Hero: Grid dengan grid-template-areas */
+.hero{display:grid;gap:var(--space-3);align-items:center;padding-block:var(--space-3);grid-template-areas:"teks" "gambar"}
+.hero-text{grid-area:teks}
+.hero-media{grid-area:gambar;margin:0}
+figcaption{font-size:.875rem;color:var(--c-muted)}
+.stat{margin:0;font-family:var(--font-head);font-size:clamp(1.75rem,1rem + 3vw,2.5rem);color:var(--c-primary)}
+.cta{padding:var(--space-3);text-align:center;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius)}
+
+/* Kartu (flex) + galeri auto-fit */
+.gallery{display:grid;gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
+.card{background:var(--c-surface);color:var(--c-text);border:1px solid var(--c-border);border-radius:var(--radius);transition:border-color .2s}
+.card:hover{border-color:var(--c-primary)}
+.card-body{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-1)}
+.card-media{position:relative}
+.card-media img{display:block;width:100%;border-radius:var(--radius) var(--radius) 0 0}
+.badge-promo{position:absolute;top:var(--space-1);right:var(--space-1);background:var(--c-accent);color:var(--c-on-accent)}
+.price{margin:auto 0 0;font-weight:700;color:var(--c-primary)}
+blockquote.card p{margin-bottom:var(--space-1)}
+blockquote.card footer{color:var(--c-muted)}
+
+/* Tabel & alert */
+.table{--bs-table-bg:transparent;--bs-table-color:var(--c-text);--bs-table-border-color:var(--c-border)}
+caption{color:var(--c-muted);font-weight:600}
+.alert{--bs-alert-bg:var(--c-surface);--bs-alert-color:var(--c-text);--bs-alert-border-color:var(--c-border);border-left:.375rem solid var(--c-accent)}
+
+/* Form */
+.form-control,.form-select{min-height:2.75rem;background-color:var(--c-surface);color:var(--c-text);border-color:var(--c-muted)}
+.form-control:user-invalid,.form-select:user-invalid,.form-check-input:user-invalid{border-color:var(--c-danger);box-shadow:0 0 0 .1875rem var(--c-danger)}
+.form-check{display:inline-flex;align-items:center;gap:var(--space-1);min-height:2.75rem;padding-left:0}
+.form-check .form-check-input{float:none;width:1.5rem;height:1.5rem;margin:0;background-color:var(--c-surface);border-color:var(--c-muted)}
+.form-check-input:checked{background-color:var(--c-primary);border-color:var(--c-primary)}
+legend.form-label{margin-bottom:0}
+.form-check-label{display:flex;align-items:center;min-height:2.75rem}
+
+/* Halaman Tentang: denah Grid berganti per breakpoint */
+.layout{display:grid;gap:var(--space-3);grid-template-areas:"profil" "tim" "lokasi" "faq"}
+.layout>*{min-width:0}
+.area-profil{grid-area:profil}.area-tim{grid-area:tim}.area-lokasi{grid-area:lokasi}.area-faq{grid-area:faq}
+.area-profil figure{margin:0 0 var(--space-2)}
+.area-profil img{border-radius:var(--radius)}
+.area-lokasi iframe{display:block;width:100%;height:18rem;border:0;border-radius:var(--radius)}
+details{margin-bottom:var(--space-1);padding:0 var(--space-2);background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius)}
+summary{display:flex;align-items:center;min-height:2.75rem;font-weight:600;cursor:pointer}
+
+.site-footer{margin-top:var(--space-3);padding-block:var(--space-2);background:var(--c-surface);border-top:1px solid var(--c-border);color:var(--c-muted)}
+.site-footer a{display:inline-flex;align-items:center;min-height:2.75rem;padding-inline:var(--space-1)}
+
+/* Breakpoint (mobile-first): 48em dan 64em */
+@media (min-width:48em){
+  .hero{grid-template-columns:1fr 1fr;grid-template-areas:"teks gambar"}
+  .layout{grid-template-columns:1fr 1fr;grid-template-areas:"profil lokasi" "tim lokasi" "faq faq"}
+}
+@media (min-width:64em){
+  .hero{grid-template-columns:5fr 4fr;gap:4rem}
+  .layout{grid-template-columns:1fr 1fr 1fr;grid-template-areas:"profil tim lokasi" "faq faq faq"}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{transition:none}
+  html{scroll-behavior:auto}
+}
